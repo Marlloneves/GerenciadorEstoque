@@ -13,7 +13,7 @@ namespace GerenciamentoPedidoEstoqueChallenge.Domain.Services
             _unitOfWork = unitOfWork;
         }
 
-        public void Atualizar(TEntity entity)
+        public virtual void Atualizar(TEntity entity)
         {
             _unitOfWork.BaseRepository.Atualizar(entity);
         }
@@ -23,12 +23,12 @@ namespace GerenciamentoPedidoEstoqueChallenge.Domain.Services
             _unitOfWork?.Dispose();
         }
 
-        public void Excluir(TEntity entity)
+        public virtual void Excluir(TEntity entity)
         {
             _unitOfWork.BaseRepository?.Excluir(entity);
         }
 
-        public void Inserir(TEntity entity)
+        public virtual void Inserir(TEntity entity)
         {
             _unitOfWork.BaseRepository.Inserir(entity);
         }

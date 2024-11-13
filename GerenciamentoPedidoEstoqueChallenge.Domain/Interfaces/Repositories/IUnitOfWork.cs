@@ -7,6 +7,7 @@
         void Rollback();
         IBaseRepository<TEntity> BaseRepository { get; }
         IClienteRepository ClienteRepository { get; }
+        IPedidoRepository PedidoRepository { get; }
         IFornecedorRepository FornecedorRepository { get; }
         IPedidoItemRepository PedidoItemRepository { get; }
         IProdutoRepository ProdutoRepository { get; }

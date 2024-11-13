@@ -2,6 +2,7 @@
 using GerenciamentoPedidoEstoqueChallenge.Application.Dtos.Requests;
 using GerenciamentoPedidoEstoqueChallenge.Application.Dtos.Responses;
 using GerenciamentoPedidoEstoqueChallenge.Application.Interfaces;
+using GerenciamentoPedidoEstoqueChallenge.Domain.Entities;
 using GerenciamentoPedidoEstoqueChallenge.Domain.Interfaces.Services;
 
 namespace GerenciamentoPedidoEstoqueChallenge.Application.Services
@@ -35,17 +36,23 @@ namespace GerenciamentoPedidoEstoqueChallenge.Application.Services
 
         public PedidoResponseDto Inserir(PedidoRequestDto entity)
         {
-            throw new NotImplementedException();
+            var pedido = _mapper.Map<Pedido>(entity);
+
+            _pedidoDomainService.Inserir(pedido);
+
+            return _mapper.Map<PedidoResponseDto>(pedido);
         }
 
         public List<PedidoResponseDto> Listar()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<PedidoResponseDto>>(_pedidoDomainService.Listar());
         }
 
         public PedidoResponseDto? Obter(int id)
         {
-            throw new NotImplementedException();
+            var pedido = _pedidoDomainService.Obter(id);
+            if(pedido is null) return null;
+            return _mapper.Map<PedidoResponseDto>(pedido);
         }
     }
 }
